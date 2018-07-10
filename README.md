@@ -8,7 +8,9 @@ __Live link__: http://projects.angiesiudevworks.com/recipereview/
 __Dev mode__:
 Run `npm install` and then `npm start`. Additionally, if you'd like to see the Jest/Enzyme tests, run `npm run test`.
 
-_All images are from my personal Instagram._
+_*All images are from my personal Instagram._
+
+_*Original JSON data and data structure came from a different source as part of another project._
 
 ## Implementation Decisions: ##
 _This is a front-end-only implementation._
