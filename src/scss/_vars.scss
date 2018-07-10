@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,700|Muli:400,700|Pacifico');
+
+// fonts
+$bodyFont: 'Muli', sans-serif;
+$accentFont: 'Pacifico', cursive;
+$secAccFont: 'Josefin Slab', serif;
+
+// colors
+$grey: #333;
+$lightGrey: lighten($grey, 50%);
+$green: #91c11e;
+
+// breakpoints
+$tablet: 768px;

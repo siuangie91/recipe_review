@@ -1,0 +1,308 @@
+@import './vars';
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	font: {
+		family: $bodyFont;
+		size: 20px;
+	}
+}
+
+html {
+	background: url(http://allroundnews.com/wp-content/uploads/2012/02/seamless-wood-texture-free-74.jpg);
+	background-repeat: repeat;
+}
+
+body {
+	position: relative;
+	height: 100%;
+	min-height: 100vh;
+	background-color: fade-out(white, 0.35);
+	padding: 10px;
+}
+
+header {
+	font: {
+		family: $accentFont;
+		size: 1.1rem;
+	}
+	text-align: center;
+}
+
+main {
+	max-width: 400px;
+	margin: 20px auto 0 auto;
+
+	@media screen and (min-width: $tablet) {
+		max-width: 700px;
+	}
+}
+
+/*** home styles ***/
+.form-control {
+	padding-bottom: 24px;
+
+	label, input, span {
+		display: block;
+		width: 100%;
+	}
+
+	.email-msg {
+		color: red;
+		font-size: 0.8rem;
+	}
+
+	input {
+		margin-top: 4px;
+		padding: 8px;
+		border: 1px solid $lightGrey;
+		font: {
+			family: $bodyFont;
+			size: 1rem;
+		}
+	}
+
+	button {
+		display: block;
+		min-width: 150px;
+		margin: 0 auto;
+		border: 1px solid darken($green, 20%);
+		padding: 14px;
+		background: $green;
+		color: white;
+		font: {
+			family: $secAccFont;
+			size: 1.1rem;
+		}
+		text-align: center;
+		letter-spacing: 0.05rem;
+		cursor: pointer;
+
+		&[disabled] {
+			border: none;
+			background: lighten($lightGrey, 20%);
+			color: lighten($grey, 50%);
+			pointer-events: none;
+			cursor: default;
+		}
+	}
+}
+
+/*** review page styles ***/
+.recipes-container {
+	margin-top: 20px;
+
+	@media screen and (min-width: $tablet) {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+}
+
+.recipe {
+	position: relative;
+	margin-bottom: 20px;
+	background: fade-out(white, 0.2);
+	cursor: pointer;
+	box-shadow: 4px 4px 8px black;
+	transition: all 400ms;
+	transform-origin: center center;
+
+	.image {
+		position: relative;
+		margin-bottom: 8px;
+
+		img {
+			display: block;
+			width: 100%;
+		}	
+	}
+
+	.icons {
+		position: absolute;
+		width: 30%;
+		right: 0;
+		color: $green;
+		text-align: center;
+		padding: 4px 10px 0 0;
+
+		div {
+			font-size: 0.75rem;
+		}
+
+		.fave {
+			font-size: 1.2rem;
+		}
+	}
+
+	.recipe-copy {
+		padding: 8px 14px 16px 14px;
+	}
+
+	h2 {
+		width: 70%;
+		font: {
+			family: $secAccFont;
+			size: 1.3rem;	
+		}
+	}
+
+	h3 {
+		width: 75%;
+		font: {
+			size: 0.8rem;
+			weight: normal;
+		}	
+	}
+}
+
+.thumb {
+	width: 100%;
+
+	@media screen and (min-width: $tablet) {
+		width: calc((100% / 3) - 20px);
+
+		.icons {
+			position: static;
+			width: 100%;
+			padding: 0;	
+		}
+
+		h2, h3 {
+			width: 100%;
+		}
+
+		h2 {
+			font-size: 1rem;
+		}
+		h3 {
+			font-size: 0.7rem;
+		}
+	}
+
+	&:hover {
+		background: white;
+		transform: scale(1.02);
+		transition: all 400ms;
+	}
+
+	.details {
+		width: 100%;
+		margin-top: 8px;
+		font-size: 0.75rem;
+		text-align: left;
+	}
+}	
+
+.opened-recipe {
+	position: fixed;
+  width: 90%;
+  max-height: 90vh;
+  top: 50%;
+  left: 50%;
+  background: white;
+  padding: 10px;
+  box-shadow: 5px 5px 10px black;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  cursor: default;
+  animation: fadein 800ms forwards;
+
+  @media screen and (min-width: $tablet) {
+	  width: 75%;
+	  max-width: 600px;	
+	}
+
+	section {
+		position: relative;
+  	overflow: auto;
+  	max-height: calc(90vh - 10px);	
+	}
+
+  i {
+		cursor: pointer;
+  }
+
+  .recipe-copy {
+  	font-size: 0.75rem;
+  	padding: 8px 0 16px 0;
+
+  	.stats, .description, h4, .label {
+  		margin-top: 12px;
+  	}
+
+  	.ingredients {
+			padding-left: 20px;
+  	}
+
+  	.label {
+  		width: 100%;
+  		text-align: left;
+  		border: 1px solid black;
+
+			thead {
+				text-align: center;
+
+				th {
+					border-bottom: 1px solid black;
+				}
+			}
+
+  		tbody {
+  			th {
+	  			width: 50%;
+	  			padding-left: 8px;
+	  		}
+  		}
+  	}
+  }
+
+  .closer {
+		position: fixed;
+		width: 50px;
+		height: 50px;
+	  top: -12px;		
+	  right: -12px;
+		border-radius: 100%;
+		background: $green;
+		color: white;
+		font-size: 1.5rem;
+		text-align: center;
+		line-height: 46px;
+		cursor: pointer;
+		z-index: 210;
+		animation: fadein 400ms forwards;
+	}
+}
+
+.blocker {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: fade-out($grey, 0.1);
+  z-index: 190;
+  animation: fadein 400ms forwards;
+}
+
+@keyframes fadein {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
